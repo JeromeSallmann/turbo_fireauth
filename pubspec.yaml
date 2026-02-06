@@ -1,6 +1,6 @@
 name: turbo_fireauth
 description: "A lightweight Firebase Authentication wrapper for Flutter. Simplify auth logic with a clean API supporting Email, Google, Apple, Facebook, X (Twitter), and Yahoo Sign-In."
-version: 0.0.2
+version: 0.0.3
 repository: https://github.com/JeromeSallmann/turbo_fireauth.git
 issue_tracker: https://github.com/JeromeSallmann/turbo_fireauth/issues
 
