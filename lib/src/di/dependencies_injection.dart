@@ -16,9 +16,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 final sl = GetIt.instance; // sl pour Service Locator
 
 void init() {
-  // Firebase Auth
-  sl.registerLazySingleton(() => FirebaseAuth.instance);
-
   // === Datasources (DATA) ===
   // On enregistre ApiService comme un singleton "lazy" (créé à la première utilisation)
   sl.registerFactory<IUserDatasource>(

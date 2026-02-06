@@ -13,7 +13,7 @@ Simplify your auth logic with a clean, singleton-based approach supporting Email
 ## Features ✨
 
 *   **Clean Singleton API**: Access everything via `TurboFireAuth.instance`.
-*   **Multiple Auth Providers**: Supports Email/Password (Login & Register) and Google Sign-In.
+*   **Multiple Auth Providers**: Supports Email/Password (Login & Register), Facebook, X(Twitter), Yahoo and Google Sign-In.
 *   **Comprehensive Results**: Instead of catching exceptions, handle specific `LoginResult` types.
 *   **User Management**: Easy methods for password reset, profile updates, and current user retrieval.
 *   **Ready for Web & Mobile**: Handles persistence and platform-specific logic internally.
@@ -26,7 +26,7 @@ Add `turbo_fireauth` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  turbo_fireauth: ^0.0.1
+  turbo_fireauth: ^0.0.2
 ```
 
 Then run:
