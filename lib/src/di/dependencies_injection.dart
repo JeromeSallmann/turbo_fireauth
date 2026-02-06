@@ -1,6 +1,5 @@
 // Crée une instance globale de GetIt
 import 'package:get_it/get_it.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:turbo_fireauth/src/data/datasources/i_user_datasource.dart';
 import 'package:turbo_fireauth/src/data/datasources/user_datasource.dart';
 import 'package:turbo_fireauth/src/data/repositories/user_repository_impl.dart';
