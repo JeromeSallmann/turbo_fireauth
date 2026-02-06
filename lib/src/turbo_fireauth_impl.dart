@@ -73,7 +73,7 @@ class TurboFireAuth {
   Future<LoginResult> login(LoginType loginType) async {
     if (!_isInitialized) {
       throw Exception(
-        "EasyFirebaseAuth n'est pas initialisé. Appelez initialize() d'abord.",
+        "TurboFireAuth n'est pas initialisé. Appelez initialize() d'abord.",
       );
     }
 
@@ -83,7 +83,7 @@ class TurboFireAuth {
   Future<void> logout() async {
     if (!_isInitialized) {
       throw Exception(
-        "EasyFirebaseAuth n'est pas initialisé. Appelez initialize() d'abord.",
+        "TurboFireAuth n'est pas initialisé. Appelez initialize() d'abord.",
       );
     }
     await sl.get<Logout>().call();
@@ -92,7 +92,7 @@ class TurboFireAuth {
   Future<void> updateUserName(String newUserName) async {
     if (!_isInitialized) {
       throw Exception(
-        "EasyFirebaseAuth n'est pas initialisé. Appelez initialize() d'abord.",
+        "TurboFireAuth n'est pas initialisé. Appelez initialize() d'abord.",
       );
     }
     await sl.get<UpdateProfileUseCase>().call(displayName: newUserName);
@@ -101,7 +101,7 @@ class TurboFireAuth {
   Future<void> sendPasswordResetEmail(String email) async {
     if (!_isInitialized) {
       throw Exception(
-        "EasyFirebaseAuth n'est pas initialisé. Appelez initialize() d'abord.",
+        "TurboFireAuth n'est pas initialisé. Appelez initialize() d'abord.",
       );
     }
     await sl.get<SendPasswordResetEmail>().call(email);
@@ -110,7 +110,7 @@ class TurboFireAuth {
   Future<void> changePassword() async {
     if (!_isInitialized) {
       throw Exception(
-        "EasyFirebaseAuth n'est pas initialisé. Appelez initialize() d'abord.",
+        "TurboFireAuth n'est pas initialisé. Appelez initialize() d'abord.",
       );
     }
     await sl.get<ChangePasswordUseCase>().call();
@@ -119,7 +119,7 @@ class TurboFireAuth {
   Future<User?> getCurrentUser() async {
     if (!_isInitialized) {
       throw Exception(
-        "EasyFirebaseAuth n'est pas initialisé. Appelez initialize() d'abord.",
+        "TurboFireAuth n'est pas initialisé. Appelez initialize() d'abord.",
       );
     }
     return await sl.get<GetCurrentUser>().call();
