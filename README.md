@@ -6,7 +6,7 @@ Simplify your auth logic with a clean, singleton-based approach supporting Email
 > **Note**: If your project is initialized with the **FlutterFire CLI**, providing `FirebaseOptions` to the `initialize` method is **not required**, as it will be handled by the system's default configuration.
 
 [![pub package](https://img.shields.io/pub/v/turbo_fireauth.svg)](https://pub.dev/packages/turbo_fireauth)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ---
 
@@ -117,4 +117,4 @@ Feel free to open issues or submit pull requests to help improve this package!
 
 ## License 📄
 
-This project is licensed under the MIT License.
+This project is licensed under the Apache License 2.0.
