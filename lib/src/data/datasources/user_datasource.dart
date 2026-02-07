@@ -76,9 +76,7 @@ class UserDatasourceImpl implements IUserDatasource {
             password: loginType.password,
           );
 
-      debugPrint(
-        "Login successful. User: ${userCredential.user?.displayName}",
-      );
+      debugPrint("Login successful. User: ${userCredential.user?.displayName}");
       return Success(userCredential.user!);
     } on FirebaseAuthException catch (e) {
       debugPrint("Erreur d'authentification (Popup) : ${e.code}");
@@ -123,6 +121,7 @@ class UserDatasourceImpl implements IUserDatasource {
     }
   }
 
+  LoginResult _getFirebaseauthErrorType(FirebaseAuthException e) {
     if (e.code == 'account-exists-with-different-credential') {
       final email = e.email;
       final credential = e.credential;
