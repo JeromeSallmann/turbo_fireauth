@@ -14,12 +14,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'di/dependencies_injection.dart' as di;
 import 'package:get_it/get_it.dart';
 
-/// La classe principale pour gérer l'authentification.
-///
-/// Exemple d'utilisation :
-/// ```dart
-/// await TurboFireAuth.instance.initialize();
-/// ```
+/// La classe principale pour gerer l'authentification.
 class TurboFireAuth {
   static final TurboFireAuth instance = TurboFireAuth._internal();
   TurboFireAuth._internal();
@@ -28,13 +23,8 @@ class TurboFireAuth {
 
   /// Initialise la connexion avec Firebase.
   ///
-  /// Le paramètre [options] est requis si vous n'avez pas configuré
+  /// Le parametre options est requis si vous n'avez pas configure
   /// FlutterFire CLI globalement.
-  ///
-  /// Exemple d'utilisation :
-  /// ```dart
-  /// await TurboFireAuth.instance.initialize(options: options);
-  /// ```
   Future<void> initialize({
     FirebaseOptions? options,
     GoogleSigninConfig? googleSigninConfig,
@@ -88,12 +78,7 @@ class TurboFireAuth {
     _isInitialized = true;
   }
 
-  /// Authentifie l'utilisateur avec le type de connexion spécifié.
-  ///
-  /// Exemple d'utilisation :
-  /// ```dart
-  /// final result = await TurboFireAuth.instance.login(LoginType.emailPassword);
-  /// ```
+  /// Authentifie l'utilisateur avec le type de connexion specifie.
   Future<LoginResult> login(LoginType loginType) async {
     if (!_isInitialized) {
       throw Exception(
@@ -104,12 +89,7 @@ class TurboFireAuth {
     return await sl.get<Login>().call(loginType);
   }
 
-  /// Déconnecte l'utilisateur.
-  ///
-  /// Exemple d'utilisation :
-  /// ```dart
-  /// await TurboFireAuth.instance.logout();
-  /// ```
+  /// Deconnecte l'utilisateur.
   Future<void> logout() async {
     if (!_isInitialized) {
       throw Exception(
@@ -119,12 +99,7 @@ class TurboFireAuth {
     await sl.get<Logout>().call();
   }
 
-  /// Met à jour le nom d'utilisateur de l'utilisateur connecté.
-  ///
-  /// Exemple d'utilisation :
-  /// ```dart
-  /// await TurboFireAuth.instance.updateUserName("John Doe");
-  /// ```
+  /// Met a jour le nom d'utilisateur de l'utilisateur connecte.
   Future<void> updateUserName(String newUserName) async {
     if (!_isInitialized) {
       throw Exception(
@@ -134,12 +109,7 @@ class TurboFireAuth {
     await sl.get<UpdateProfileUseCase>().call(displayName: newUserName);
   }
 
-  /// Envoie un email de réinitialisation de mot de passe.
-  ///
-  /// Exemple d'utilisation :
-  /// ```dart
-  /// await TurboFireAuth.instance.sendPasswordResetEmail("john.doe@example.com");
-  /// ```
+  /// Envoie un email de reinitialisation de mot de passe.
   Future<void> sendPasswordResetEmail(String email) async {
     if (!_isInitialized) {
       throw Exception(
@@ -149,12 +119,8 @@ class TurboFireAuth {
     await sl.get<SendPasswordResetEmail>().call(email);
   }
 
-  /// Envoie un email de réinitialisation de mot de passe à l'utilisateur connecté.
-  ///
-  /// Exemple d'utilisation :
-  /// ```dart
-  /// await TurboFireAuth.instance.changePassword();
-  /// ```
+  /// Envoie un email de reinitialisation de mot de passe a l'utilisateur connecte.
+
   Future<void> changePassword() async {
     if (!_isInitialized) {
       throw Exception(
@@ -164,12 +130,8 @@ class TurboFireAuth {
     await sl.get<ChangePasswordUseCase>().call();
   }
 
-  /// Récupère l'utilisateur connecté.
-  ///
-  /// Exemple d'utilisation :
-  /// ```dart
-  /// final user = await TurboFireAuth.instance.getCurrentUser();
-  /// ```
+  /// Recupere l'utilisateur connecte.
+
   Future<User?> getCurrentUser() async {
     if (!_isInitialized) {
       throw Exception(

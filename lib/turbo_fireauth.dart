@@ -1,3 +1,6 @@
+// lib/turbo_fireauth.dart
+
+// ignore: unnecessary_library_name
 library turbo_fireauth;
 
 export 'src/turbo_fireauth_impl.dart' show TurboFireAuth;

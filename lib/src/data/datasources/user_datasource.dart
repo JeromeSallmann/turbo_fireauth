@@ -44,7 +44,7 @@ class UserDatasourceImpl implements IUserDatasource {
             provider,
           );
           debugPrint(
-            "Connexion réussie. Utilisateur : ${userCredential.user?.displayName}",
+            "Login successful. User: ${userCredential.user?.displayName}",
           );
           return Success(userCredential.user!);
         }
@@ -54,7 +54,7 @@ class UserDatasourceImpl implements IUserDatasource {
           provider,
         );
         debugPrint(
-          "Connexion réussie. Utilisateur : ${userCredential.user?.displayName}",
+          "Login successful. User: ${userCredential.user?.displayName}",
         );
         return Success(userCredential.user!);
       }
@@ -77,7 +77,7 @@ class UserDatasourceImpl implements IUserDatasource {
           );
 
       debugPrint(
-        "Connexion réussie. Utilisateur : ${userCredential.user?.displayName}",
+        "Login successful. User: ${userCredential.user?.displayName}",
       );
       return Success(userCredential.user!);
     } on FirebaseAuthException catch (e) {
@@ -103,7 +103,7 @@ class UserDatasourceImpl implements IUserDatasource {
           );
 
       debugPrint(
-        "Création réussie. Utilisateur : ${userCredential.user?.displayName}",
+        "Creation successful. User: ${userCredential.user?.displayName}",
       );
 
       await userCredential.user!.sendEmailVerification(
@@ -123,7 +123,6 @@ class UserDatasourceImpl implements IUserDatasource {
     }
   }
 
-  LoginResult _getFirebaseauthErrorType(FirebaseAuthException e) {
     if (e.code == 'account-exists-with-different-credential') {
       final email = e.email;
       final credential = e.credential;
@@ -131,7 +130,7 @@ class UserDatasourceImpl implements IUserDatasource {
       if (email != null && credential != null) {
         return AccountAlreadyExistDifferentProvider(email, credential);
       } else {
-        return UnknownFailure("Informations d'erreur incomplètes.");
+        return UnknownFailure("Incomplete error information.");
       }
     } else if (e.code == 'invalid-email') {
       return EmailInvalidFailure();
@@ -160,7 +159,7 @@ class UserDatasourceImpl implements IUserDatasource {
     } else if (e.code == 'requires-recent-login') {
       return MustReloginFailure();
     } else {
-      debugPrint("Erreur d'authentification : ${e.message}");
+      debugPrint("Auth error: ${e.message}");
       return UnknownFailure(e.toString());
     }
   }
@@ -172,14 +171,14 @@ class UserDatasourceImpl implements IUserDatasource {
           .createUserWithEmailAndPassword(email: user, password: pwd);
 
       debugPrint(
-        "Création réussie. Utilisateur : ${userCredential.user?.displayName}",
+        "Creation successful. User: ${userCredential.user?.displayName}",
       );
       return Success(userCredential.user!);
     } on FirebaseAuthException catch (e) {
-      debugPrint("Erreur de création de compte : ${e.code}");
+      debugPrint("Account creation error: ${e.code}");
       return _getFirebaseauthErrorType(e);
     } catch (e) {
-      debugPrint("Erreur inattendue : $e");
+      debugPrint("Unexpected error: $e");
       return UnknownFailure(e.toString());
     }
   }
@@ -189,13 +188,13 @@ class UserDatasourceImpl implements IUserDatasource {
     final User? userToGetToken = FirebaseAuth.instance.currentUser;
 
     if (userToGetToken != null) {
-      debugPrint('Utilisateur en cours : ${userToGetToken.email}');
+      debugPrint('Current user: ${userToGetToken.email}');
 
       final String? idToken = await userToGetToken.getIdToken(forceRefresh);
 
       return idToken;
     } else {
-      debugPrint('Aucun utilisateur en cours');
+      debugPrint('No current user');
       return null;
     }
   }
@@ -251,7 +250,7 @@ class UserDatasourceImpl implements IUserDatasource {
       final String? idToken = authDynamic.idToken;
 
       if (idToken == null) {
-        return UnknownFailure("Impossible de récupérer l'ID Token de Google.");
+        return UnknownFailure("Could not retrieve Google ID Token.");
       }
 
       final AuthCredential credential = GoogleAuthProvider.credential(
@@ -262,11 +261,11 @@ class UserDatasourceImpl implements IUserDatasource {
       final UserCredential userCredential = await FirebaseAuth.instance
           .signInWithCredential(credential);
 
-      debugPrint("Connecté avec succès : ${userCredential.user?.displayName}");
+      debugPrint("Login successful: ${userCredential.user?.displayName}");
 
       return Success(userCredential.user!);
     } catch (error) {
-      debugPrint("Erreur Google Sign In : $error");
+      debugPrint("Google Sign In Error: $error");
       return UnknownFailure(error.toString());
     }
   }

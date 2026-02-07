@@ -1,4 +1,4 @@
-# TurboFireAuth 🚀
+# TurboFireAuth
 
 A Flutter package for easy and clean Firebase Authentication.  
 Simplify your auth logic with a clean, singleton-based approach supporting Email/Password and Google Sign-In out of the box.
@@ -10,23 +10,23 @@ Simplify your auth logic with a clean, singleton-based approach supporting Email
 
 ---
 
-## Features ✨
+## Features
 
-*   **Clean Singleton API**: Access everything via `TurboFireAuth.instance`.
-*   **Multiple Auth Providers**: Supports Email/Password (Login & Register), Facebook, X(Twitter), Yahoo and Google Sign-In.
-*   **Comprehensive Results**: Instead of catching exceptions, handle specific `LoginResult` types.
-*   **User Management**: Easy methods for password reset, profile updates, and current user retrieval.
-*   **Ready for Web & Mobile**: Handles persistence and platform-specific logic internally.
+* **Clean Singleton API**: Access everything via `TurboFireAuth.instance`.
+* **Multiple Auth Providers**: Supports Email/Password (Login & Register), Facebook, X(Twitter), Yahoo and Google Sign-In.
+* **Comprehensive Results**: Instead of catching exceptions, handle specific `LoginResult` types.
+* **User Management**: Easy methods for password reset, profile updates, and current user retrieval.
+* **Ready for Web & Mobile**: Handles persistence and platform-specific logic internally.
 
 ---
 
-## Installation 📦
+## Installation
 
 Add `turbo_fireauth` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  turbo_fireauth: ^0.0.2
+  turbo_fireauth: ^0.0.4
 ```
 
 Then run:
@@ -36,7 +36,7 @@ flutter pub get
 
 ---
 
-## Usage 🛠️
+## Usage
 
 ### 1. Initialization
 Initialize the package in your `main.dart` before calling any auth methods.
@@ -98,23 +98,23 @@ await TurboFireAuth.instance.updateUserName("New Name");
 
 ---
 
-## Handling Results 🎯
+## Handling Results
 
 `TurboFireAuth` returns a `LoginResult` for all login operations, making error handling predictable:
 
-*   `Success`: Login successful, contains the `User`.
-*   `EmailAlreadyExistsFailure`: Registration failed because email is in use.
-*   `WrongCredentials`: Invalid email or password.
-*   `UserDisabledFailure`: The user account has been disabled.
-*   `LoginCancelledFailure`: User closed the login popup/modal.
-*   *And many more...*
+* `Success`: Login successful, contains the `User`.
+* `EmailAlreadyExistsFailure`: Registration failed because email is in use.
+* `WrongCredentials`: Invalid email or password.
+* `UserDisabledFailure`: The user account has been disabled.
+* `LoginCancelledFailure`: User closed the login popup/modal.
+* And many more...
 
 ---
 
-## Contribution 🤝
+## Contribution
 
 Feel free to open issues or submit pull requests to help improve this package!
 
-## License 📄
+## License
 
 This project is licensed under the Apache License 2.0.
