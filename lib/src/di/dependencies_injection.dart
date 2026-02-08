@@ -1,4 +1,5 @@
 // Crée une instance globale de GetIt
+import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:turbo_fireauth/src/data/datasources/i_user_datasource.dart';
 import 'package:turbo_fireauth/src/data/datasources/user_datasource.dart';
@@ -20,7 +21,7 @@ void init() {
   sl.registerFactory<IUserDatasource>(
     () => UserDatasourceImpl(
       sl(),
-      sl.get<GoogleSignIn>(),
+      kIsWeb ? null : sl.get<GoogleSignIn>(),
       sl.get<String>(instanceName: 'emailVerificationCallbackUri'),
       sl.get<String>(instanceName: 'passwordResetCallbackUri'),
     ),

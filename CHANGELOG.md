@@ -1,3 +1,6 @@
+## 0.0.5
+* Fixes Google Sign-In on Web.
+
 ## 0.0.4
 * Fixes Pub.dev analysis issues.
 

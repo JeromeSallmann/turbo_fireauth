@@ -47,7 +47,9 @@ class TurboFireAuth {
       sl.registerSingleton<FirebaseAuth>(FirebaseAuth.instance);
     }
 
-    if (!sl.isRegistered<GoogleSignIn>() && googleSigninConfig != null) {
+    if (!kIsWeb &&
+        !sl.isRegistered<GoogleSignIn>() &&
+        googleSigninConfig != null) {
       final GoogleSignIn googleSignIn = GoogleSignIn.instance;
       googleSignIn.initialize(
         clientId: googleSigninConfig.clientId,
