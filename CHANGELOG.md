@@ -1,3 +1,6 @@
+## 0.0.6
+* Secures GetIT when arguments are not initialized.
+
 ## 0.0.5
 * Fixes Google Sign-In on Web.
 

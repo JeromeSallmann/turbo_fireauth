@@ -22,8 +22,12 @@ void init() {
     () => UserDatasourceImpl(
       sl(),
       kIsWeb ? null : sl.get<GoogleSignIn>(),
-      sl.get<String>(instanceName: 'emailVerificationCallbackUri'),
-      sl.get<String>(instanceName: 'passwordResetCallbackUri'),
+      sl.isRegistered<String>(instanceName: 'emailVerificationCallbackUri')
+          ? sl.get<String>(instanceName: 'emailVerificationCallbackUri')
+          : null,
+      sl.isRegistered<String>(instanceName: 'passwordResetCallbackUri')
+          ? sl.get<String>(instanceName: 'passwordResetCallbackUri')
+          : null,
     ),
   );
 
