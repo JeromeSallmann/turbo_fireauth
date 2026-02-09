@@ -1,3 +1,6 @@
+## 0.0.7
+* Bug fix in user agent detection.
+
 ## 0.0.6
 * Secures GetIT when arguments are not initialized.
 

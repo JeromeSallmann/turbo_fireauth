@@ -275,7 +275,10 @@ class UserDatasourceImpl implements IUserDatasource {
       final WebBrowserInfo webBrowserInfo = await deviceInfo.webBrowserInfo;
       final String? userAgent = webBrowserInfo.userAgent;
       if (userAgent != null) {
-        return userAgent.contains("iphone") || userAgent.contains("android");
+        final agentToCompare = userAgent.toLowerCase();
+        return agentToCompare.contains("iphone") ||
+            agentToCompare.contains("android") ||
+            agentToCompare.contains("safari");
       } else {
         return false;
       }
