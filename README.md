@@ -26,7 +26,7 @@ Add `turbo_fireauth` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  turbo_fireauth: ^0.0.7
+  turbo_fireauth: ^0.0.8
 ```
 
 Then run:

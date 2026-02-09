@@ -34,10 +34,21 @@ class UserDatasourceImpl implements IUserDatasource {
         bool isMobileWeb = await _isMobileBrowser();
 
         if (isMobileWeb) {
-          // Navigateur mobile : Redirect est plus fiable
-          debugPrint("Connexion en cours avec Redirection.");
-          await _auth.signInWithRedirect(provider);
-          return Redirecting();
+          if (await _isAndroidBrowser()) {
+            // Navigateur mobile : Redirect est plus fiable
+            debugPrint("Connexion en cours avec Redirection.");
+            await _auth.signInWithRedirect(provider);
+            return Redirecting();
+          } else {
+            debugPrint("Connexion en cours avec Popup.");
+            final UserCredential userCredential = await _auth.signInWithPopup(
+              provider,
+            );
+            debugPrint(
+              "Login successful. User: ${userCredential.user?.displayName}",
+            );
+            return Success(userCredential.user!);
+          }
         } else {
           debugPrint("Connexion en cours avec Popup.");
           final UserCredential userCredential = await _auth.signInWithPopup(
@@ -272,16 +283,32 @@ class UserDatasourceImpl implements IUserDatasource {
   Future<bool> _isMobileBrowser() async {
     final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     if (kIsWeb) {
-      final WebBrowserInfo webBrowserInfo = await deviceInfo.webBrowserInfo;
-      final String? userAgent = webBrowserInfo.userAgent;
-      if (userAgent != null) {
-        final agentToCompare = userAgent.toLowerCase();
-        return agentToCompare.contains("iphone") ||
-            agentToCompare.contains("android") ||
-            agentToCompare.contains("safari");
-      } else {
-        return false;
-      }
+      return await _isIOsBrowser() || await _isAndroidBrowser();
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> _isIOsBrowser() async {
+    final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    final WebBrowserInfo webBrowserInfo = await deviceInfo.webBrowserInfo;
+    final String? userAgent = webBrowserInfo.userAgent;
+    if (userAgent != null) {
+      final agentToCompare = userAgent.toLowerCase();
+      return agentToCompare.contains("iphone") ||
+          agentToCompare.contains("ipad");
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> _isAndroidBrowser() async {
+    final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    final WebBrowserInfo webBrowserInfo = await deviceInfo.webBrowserInfo;
+    final String? userAgent = webBrowserInfo.userAgent;
+    if (userAgent != null) {
+      final agentToCompare = userAgent.toLowerCase();
+      return agentToCompare.contains("android");
     } else {
       return false;
     }

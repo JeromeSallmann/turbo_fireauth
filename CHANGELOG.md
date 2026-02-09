@@ -1,4 +1,7 @@
 ## 0.0.7
+* Fixes iOS issue in connection.
+
+## 0.0.7
 * Bug fix in user agent detection.
 
 ## 0.0.6
