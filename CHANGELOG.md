@@ -1,4 +1,4 @@
-## 0.0.7
+## 0.0.8
 * Fixes iOS issue in connection.
 
 ## 0.0.7

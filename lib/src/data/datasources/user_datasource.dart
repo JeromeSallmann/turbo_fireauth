@@ -281,7 +281,6 @@ class UserDatasourceImpl implements IUserDatasource {
   }
 
   Future<bool> _isMobileBrowser() async {
-    final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     if (kIsWeb) {
       return await _isIOsBrowser() || await _isAndroidBrowser();
     } else {
